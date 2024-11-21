@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My Tasks</h1>
+        <a href="/logout/" class="logout-button">Logout</a>
+    </header>
+    <div class="task-container">
+        {% for task in tasks %}
+        <div class="task">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description }}</p>
+            <div class="task-actions">
+                <a href="/edit/{{ task.id }}/" class="edit-button">Edit</a>
+                <a href="/delete-confirmation/{{ task.id }}/" class="delete-button">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <a href="/add/" class="add-button">+ Add New Task</a>
+    </footer>
+</body>
+</html>
